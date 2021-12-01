@@ -4,12 +4,11 @@
     "parameters": {
         "storageAccountName": {
             "type": "string",
-            "defaultValue": "store2392",
-            "allowedValues": [ "store2392", "storeage2392" ]
+            "defaultValue": "store2392"
         },
         "StorageAccounttemplate": {
             "type": "string",
-            "defaultValue": "storageaccount.json"
+            "defaultValue": "https://raw.githubusercontent.com/vnextcoder/arm-nesting/main/storageaccount.json"
         }
     },
     "functions": [],
@@ -23,7 +22,7 @@
             "subscriptionId": "[subscription().subscriptionId]",
             "properties": {
                 "mode": "Incremental",
-                
+
                 "templateLink": {
                     "contentVersion": "1.0.0.0",
                     "uri": "[parameters('StorageAccounttemplate')]"
@@ -38,6 +37,7 @@
                     "StorageAccountType": {
                         "value": "Standard_LRS"
                     }
+
                 }
             }
 
