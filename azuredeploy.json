@@ -44,5 +44,11 @@
         }
 
     ],
-    "outputs": {}
+    "outputs": {
+        "storageAccountInfo": {
+            "value": "[reference('nestedTemplate').outputs.storageAccountInfo.value]",
+            "type": "string"
+        }
+
+    }
 }
