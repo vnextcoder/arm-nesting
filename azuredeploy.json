@@ -47,7 +47,7 @@
     "outputs": {
         "storageAccountInfo": {
             "value": "[reference('nestedTemplate').outputs.storageAccountInfo.value]",
-            "type": "string"
+            "type": "object"
         }
 
     }
