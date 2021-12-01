@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "string",
+            "defaultValue": "store2392",
+            "allowedValues": [ "store2392", "storeage2392" ]
+        },
+        "StorageAccounttemplate": {
+            "type": "string",
+            "defaultValue": "storageaccount.json"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2017-05-10",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "[resourceGroup().name]",
+            "subscriptionId": "[subscription().subscriptionId]",
+            "properties": {
+                "mode": "Incremental",
+                
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "[parameters('StorageAccounttemplate')]"
+                },
+                "parameters": {
+                    "StorageAccountLocation": {
+                        "value": "West US" // TODO: Fill in parameter value
+                    },
+                    "StorageAccountName": {
+                        "value": "[parameters('storageAccountName')]"
+                    },
+                    "StorageAccountType": {
+                        "value": "Standard_LRS"
+                    }
+                }
+            }
+
+        }
+
+    ],
+    "outputs": {}
+}
